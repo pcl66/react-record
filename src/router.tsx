@@ -1,5 +1,9 @@
-import { NavLink, Navigate, Outlet, createBrowserRouter } from 'react-router-dom'
+import { Navigate, Outlet, createBrowserRouter } from 'react-router-dom'
 import { Welcome } from './pages/welcome'
+import { Welcome1 } from './pages/welcome/components/Welcome1'
+import { Welcome2 } from './pages/welcome/components/Welcome2'
+import { Welcome3 } from './pages/welcome/components/Welcome3'
+import { Welcome4 } from './pages/welcome/components/Welcome4'
 
 export const router = createBrowserRouter([
   {
@@ -16,21 +20,19 @@ export const router = createBrowserRouter([
         children: [
           {
             path: '1',
-            element: <div style={{ border: '1px solid red' }}>
-                1
-                <NavLink to="/welcome/2">2</NavLink>
-              </div>,
+            element: <Welcome1 />,
           },
           {
             path: '2',
-            element: <div style={{ border: '1px solid red' }}>
-                2
-                <NavLink to="/welcome/3">3</NavLink>
-              </div>,
+            element: <Welcome2 />,
           },
           {
             path: '3',
-            element: <div style={{ border: '1px solid red' }}>3</div>,
+            element: <Welcome3 />,
+          },
+          {
+            path: '4',
+            element: <Welcome4 />,
           },
         ],
       },
