@@ -23,7 +23,7 @@ export function Welcome() {
     config: { duration: 750 },
   })
   return (
-    <div className='h-screen bg-gradient-to-b from-[#5C33BE] to-[#8F4CD7]'>
+    <div className='h-screen bg-gradient-to-b from-[#5C33BE] to-[#8F4CD7] overflow-hidden'>
       <div className='fixed right-2 top-2 text-white text-3xl'>
         跳过
       </div>
@@ -31,13 +31,15 @@ export function Welcome() {
         <img src={shanZhu} alt="" />
         <div className='text-white text-3xl font-bold'>山竹记账</div>
       </div>
-      {
-        transitions((style, item) => (
-          <animated.div className='flex justify-center items-center relative' key={item} style={{ ...style, pointerEvents: isAnimating ? 'none' : 'auto' }}>
-            {outletMap.current[item]}
-          </animated.div>
-        ))
-      }
+      <div className='relative'>
+        {
+          transitions((style, item) => (
+            <animated.div className='flex w-full justify-center items-center absolute' key={item} style={{ ...style, pointerEvents: isAnimating ? 'none' : 'auto' }}>
+              {outletMap.current[item]}
+            </animated.div>
+          ))
+        }
+      </div>
     </div>
   )
 }
