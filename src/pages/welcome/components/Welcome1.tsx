@@ -7,7 +7,12 @@ export const Welcome1 = () => {
   const next = () => {
     nav('/welcome/2')
   }
+  const hSwipeChange = (direction: string) => {
+    if (direction === 'left') {
+      next()
+    }
+  }
   return (
-    <WelcomeTemplate imgSrc={zz} word1='会赚钱' word2='还要会攒钱' onClick={next}/>
+    <WelcomeTemplate imgSrc={zz} word1='会赚钱' word2='还要会攒钱' onClick={next} onSwipeChange={hSwipeChange}/>
   )
 }

@@ -7,7 +7,12 @@ export const Welcome4 = () => {
   const next = () => {
     nav('/home')
   }
+  const hSwipeChange = (direction: string) => {
+    if (direction === 'left') {
+      next()
+    }
+  }
   return (
-    <WelcomeTemplate imgSrc={zz} word1='云备份' word2='再也不怕数据丢失' onClick={next} isLast/>
+    <WelcomeTemplate imgSrc={zz} word1='云备份' word2='再也不怕数据丢失' onClick={next} onSwipeChange={hSwipeChange} isLast/>
   )
 }
