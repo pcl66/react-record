@@ -1,7 +1,7 @@
 import { animated, useTransition } from '@react-spring/web'
 import type { ReactNode } from 'react'
 import { useRef, useState } from 'react'
-import { useLocation, useOutlet } from 'react-router-dom'
+import { Navigate, useLocation, useNavigate, useOutlet } from 'react-router-dom'
 import shanZhu from '../../assets/山竹.svg'
 
 export function Welcome() {
@@ -9,6 +9,7 @@ export function Welcome() {
   const location = useLocation()
   const outletMap = useRef<Record<string, ReactNode>>({})
   const outlet = useOutlet()
+  const nav = useNavigate()
   outletMap.current[location.pathname] = outlet
   const transitions = useTransition(location.pathname, {
     from: { transform: location.pathname === '/welcome/1' ? 'translateX(0%)' : 'translateX(100%)' },
@@ -22,9 +23,18 @@ export function Welcome() {
     },
     config: { duration: 750 },
   })
+
+  // 跳过（已经观看过广告）
+  const isSkip = JSON.parse(localStorage.getItem('skipWelcome') || 'false')
+  if (isSkip) {
+    return <Navigate to={'/home'}/>
+  }
   return (
     <div className='h-screen bg-gradient-to-b from-[#5C33BE] to-[#8F4CD7] overflow-hidden'>
-      <div className='fixed right-2 top-2 text-white text-3xl'>
+      <div className='fixed right-2 top-2 text-white text-3xl' onTouchStart={() => {
+        localStorage.setItem('skipWelcome', 'true')
+        nav('/home')
+      }}>
         跳过
       </div>
       <div className='h-[200px] pt-[80px] flex justify-center items-center flex-col gap-2'>

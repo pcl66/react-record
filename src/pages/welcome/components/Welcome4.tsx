@@ -5,6 +5,7 @@ import { WelcomeTemplate } from './WelcomeTemplate'
 export const Welcome4 = () => {
   const nav = useNavigate()
   const next = () => {
+    localStorage.setItem('welcome', 'true')
     nav('/home')
   }
   const hSwipeChange = (direction: string) => {
