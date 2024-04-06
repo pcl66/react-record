@@ -1,11 +1,13 @@
 import { useNavigate } from 'react-router-dom'
 import zz from '../../../assets/云.svg'
+import { useUserStore } from '../../../store/useUserStore'
 import { WelcomeTemplate } from './WelcomeTemplate'
 
 export const Welcome4 = () => {
   const nav = useNavigate()
+  const setIsSkipped = useUserStore(state => state.setIsSkipped)
   const next = () => {
-    localStorage.setItem('skipWelcome', 'true')
+    setIsSkipped(true)
     nav('/home')
   }
   const hSwipeChange = (direction: string) => {

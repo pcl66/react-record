@@ -3,6 +3,7 @@ import type { ReactNode } from 'react'
 import { useRef, useState } from 'react'
 import { Navigate, useLocation, useNavigate, useOutlet } from 'react-router-dom'
 import shanZhu from '../../assets/山竹.svg'
+import { useUserStore } from '../../store/useUserStore'
 
 export function Welcome() {
   const [isAnimating, setIsAnimating] = useState(false)
@@ -24,15 +25,16 @@ export function Welcome() {
     config: { duration: 750 },
   })
 
-  // 跳过（已经观看过广告）
-  const isSkip = JSON.parse(localStorage.getItem('skipWelcome') || 'false')
-  if (isSkip) {
+  // 跳过（已经观看过广告
+  const isSkipped = useUserStore(state => state.userInfo.isSkipped)
+  const setIsSkipped = useUserStore(state => state.setIsSkipped)
+  if (isSkipped) {
     return <Navigate to={'/home'}/>
   }
   return (
     <div className='h-screen bg-gradient-to-b from-[#5C33BE] to-[#8F4CD7] overflow-hidden'>
       <div className='fixed right-2 top-2 text-white text-3xl' onTouchStart={() => {
-        localStorage.setItem('skipWelcome', 'true')
+        setIsSkipped(true)
         nav('/home')
       }}>
         跳过

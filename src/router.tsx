@@ -1,4 +1,4 @@
-import { Navigate, Outlet, createHashRouter } from 'react-router-dom'
+import { Navigate, Outlet, createBrowserRouter } from 'react-router-dom'
 import { Welcome } from './pages/welcome'
 import { Welcome1 } from './pages/welcome/components/Welcome1'
 import { Welcome2 } from './pages/welcome/components/Welcome2'
@@ -6,7 +6,7 @@ import { Welcome3 } from './pages/welcome/components/Welcome3'
 import { Welcome4 } from './pages/welcome/components/Welcome4'
 import { Home } from './pages/home'
 
-export const router = createHashRouter([
+export const router = createBrowserRouter([
   {
     path: '/',
     element: <Outlet />,
