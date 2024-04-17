@@ -5,6 +5,7 @@ import { Welcome2 } from './pages/welcome/components/Welcome2'
 import { Welcome3 } from './pages/welcome/components/Welcome3'
 import { Welcome4 } from './pages/welcome/components/Welcome4'
 import { Home } from './pages/home'
+import { RecordList } from './pages/record-list'
 
 export const router = createBrowserRouter([
   {
@@ -42,6 +43,10 @@ export const router = createBrowserRouter([
   {
     path: '/home',
     element: <Home />,
+  },
+  {
+    path: '/record-list',
+    element: <RecordList />,
   },
   {
     path: '*',
