@@ -4,6 +4,7 @@ import zz from '../../assets/山竹.svg'
 import { Button } from '../../components/button'
 import { Draw } from '../../components/draw'
 import { AddButton } from '../../components/add-button'
+import { Calculator } from '../../components/calculator'
 
 export const Home = () => {
   const [open, setOpen] = useState(false)
@@ -20,6 +21,7 @@ export const Home = () => {
       <Button onClick={() => { setOpen(true) }} block text='开始记账'/>
       <Draw open={open} onClose={() => { setOpen(false) }} />
       <AddButton className='fixed right-2 bottom-2'/>
+      <Calculator />
     </div>
   )
 }
