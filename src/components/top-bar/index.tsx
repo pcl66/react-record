@@ -9,9 +9,9 @@ export const TopBar: React.FC<TopBarProps> = (p) => {
   const { icon, title } = p
   return (
     <div className="pt-6 pl-6 pb-2 bg-gradient-to-b from-[#5C33BE] to-[#8F4CD7]">
-      <div className='flex gap-3 text-white'>
+      <div className='flex gap-3 text-white items-center'>
         {icon || <Icon name="menu" color='white'/>}
-        <span className='text-sm'>{title}</span>
+        <span className='text-[24px]'>{title}</span>
       </div>
     </div>
   )

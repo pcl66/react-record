@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 import zz from '../../assets/山竹.svg'
 import { Button } from '../../components/button'
 import { Draw } from '../../components/draw'
@@ -8,6 +9,7 @@ import { Calculator } from '../../components/calculator'
 
 export const Home = () => {
   const [open, setOpen] = useState(false)
+  const nav = useNavigate()
   useEffect(() => {
     // todo
     axios.get('http://localhost:5173/api/v1/me')
@@ -18,7 +20,10 @@ export const Home = () => {
         <img className='w-[125px] h-[125px]' src={zz} alt="" />
       </div>
       {/* @ts-expect-error */}
-      <Button onClick={() => { setOpen(true) }} block text='开始记账'/>
+      <Button onClick={() => {
+        setOpen(true)
+        nav('/record-list')
+      }} block text='开始记账'/>
       <Draw open={open} onClose={() => { setOpen(false) }} />
       <AddButton className='fixed right-2 bottom-2'/>
       <Calculator />
