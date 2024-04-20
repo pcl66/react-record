@@ -7,7 +7,7 @@ export interface IconProps {
 export const Icon: React.FC<IconProps> = (p) => {
   const { className, color, name } = p
   return (
-    <svg className={`${className} w-[1.2em] h-[1.2em] fill-[${color}] text-[${color}]`}>
+    <svg className={`${className || ''} w-[1.2em] h-[1.2em]`} style={{ fill: color }}>
       <use xlinkHref={`#${name}`}></use>
     </svg>
   )
