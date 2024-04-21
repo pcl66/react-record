@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { Icon } from '../../components/icon'
-import { TabPanel } from '../../components/tabs/tab-panle'
+import { TabPanel } from '../../components/tabs/tab-panel'
 import { Tabs } from '../../components/tabs/tabs'
 import { TopBar } from '../../components/top-bar'
+import { CurrentMonth } from './component/CurrentMonth'
 
 export const RecordList = () => {
   const [activeTab, setActiveTab] = useState('本月')
@@ -15,9 +16,7 @@ export const RecordList = () => {
       <div>
         <Tabs active={activeTab} onClick={hClickTab}>
           <TabPanel name={'本月'}>
-            <div>xxxx11</div>
-            <div>xxxx22</div>
-            <div>xxxx33</div>
+            <CurrentMonth />
           </TabPanel>
           <TabPanel name={'上个月'}>
             <div>上个月</div>

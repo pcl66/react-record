@@ -4,10 +4,13 @@ import { viteMockServe } from 'vite-plugin-mock'
 import { svgsprites } from './src/vite_plugin/svgsprites'
 
 // https://vitejs.dev/config/
-export default defineConfig({
+export default defineConfig(({ command }) => ({
+  define: {
+    isDev: command === 'serve',
+  },
   plugins: [
     react(),
     viteMockServe(),
     svgsprites(),
   ],
-})
+}))
