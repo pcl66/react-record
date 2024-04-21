@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react'
-import axios from 'axios'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import zz from '../../assets/山竹.svg'
 import { Button } from '../../components/button'
@@ -10,10 +9,7 @@ import { Calculator } from '../../components/calculator'
 export const Home = () => {
   const [open, setOpen] = useState(false)
   const nav = useNavigate()
-  useEffect(() => {
-    // todo
-    axios.get('http://localhost:5173/api/v1/me')
-  })
+
   return (
     <div className='px-2'>
       <div className='flex justify-center items-center mt-[20vh] mb-[10vh]'>

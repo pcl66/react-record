@@ -56,7 +56,7 @@ export const Tabs: React.FC<TabsProps> = (p) => {
             width: indicatorWidth,
             // TODO 优化为transform位移
             left: indicatorLeft,
-          }} className='absolute bottom-0 h-[3px] w-6 bg-[#C8B1FF] transition-all'></div>
+          }} className='absolute bottom-0 h-[3px] w-6 bg-[#C8B1FF] transition-all duration-500'></div>
         </div>
       }
       {activeTab}

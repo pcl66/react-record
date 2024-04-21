@@ -20,7 +20,13 @@ export const RecordList = () => {
             <div>xxxx33</div>
           </TabPanel>
           <TabPanel name={'上个月'}>
-            <div>xxxx11</div>
+            <div>上个月</div>
+          </TabPanel>
+          <TabPanel name={'今年'}>
+            <div>今年</div>
+          </TabPanel>
+          <TabPanel name={'自定义时间'}>
+            <div>自定义时间</div>
           </TabPanel>
         </Tabs>
       </div>
