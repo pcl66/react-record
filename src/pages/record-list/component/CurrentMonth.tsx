@@ -7,7 +7,7 @@ const pageItems = 25
 export const CurrentMonth = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const [items, setItems] = useState<any[]>([])
-  const [hasMore, setHasMore] = useState(true)
+  const [hasMore, setHasMore] = useState(false)
   const count = useRef(0)
   useEffect(() => {
     ajax.get(`/api/v1/items?page=${currentPage}`).then((v) => {
@@ -18,13 +18,12 @@ export const CurrentMonth = () => {
       if (currentPage * pageItems >= count.current) {
         setHasMore(false)
       }
+      else {
+        setHasMore(true)
+      }
     })
   }, [currentPage])
   const hLoadMore = () => {
-    // if (currentPage * pageItems >= count.current) {
-    //   setHasMore(false)
-    //   return
-    // }
     setCurrentPage(currentPage + 1)
   }
   return (
@@ -56,12 +55,17 @@ export const CurrentMonth = () => {
         })
       }</ol>
       {
-        hasMore
-          ? <div className='mx-5'>
+        hasMore && (
+          <div className='mx-5'>
             {/* @ts-expect-error */}
-        <Button onClick={hLoadMore} text='加载更多' block />
-      </div>
-          : <span>没有更多了</span>
+            <Button onClick={hLoadMore} text='加载更多' block />
+          </div>
+        )
+      }
+      {
+        items.length > 0 && !hasMore && (
+          <span>没有更多了</span>
+        )
       }
 
     </>
