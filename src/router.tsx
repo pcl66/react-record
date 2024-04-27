@@ -6,6 +6,7 @@ import { Welcome3 } from './pages/welcome/components/Welcome3'
 import { Welcome4 } from './pages/welcome/components/Welcome4'
 import { Home } from './pages/home'
 import { RecordList } from './pages/record-list'
+import { Login } from './pages/login'
 
 export const router = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
         ],
       },
     ],
+  },
+  {
+    path: '/login',
+    element: <Login />,
   },
   {
     path: '/home',
