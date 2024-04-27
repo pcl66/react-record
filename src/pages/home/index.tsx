@@ -18,7 +18,7 @@ export const Home = () => {
       {/* @ts-expect-error */}
       <Button onClick={() => {
         setOpen(true)
-        nav('/record-list')
+        nav('/login')
       }} block text='开始记账'/>
       <Draw open={open} onClose={() => { setOpen(false) }} />
       <AddButton className='fixed right-2 bottom-2'/>
