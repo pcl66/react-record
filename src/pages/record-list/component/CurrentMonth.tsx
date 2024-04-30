@@ -32,8 +32,8 @@ export const CurrentMonth = () => {
       items.length > 0
         && items.map((item) => {
           return (
-            <div>
-              <li key={item.id} className='flex items-center b-[#EEE] justify-between border-b py-2'>
+            <div key={item.id}>
+              <li className='flex items-center b-[#EEE] justify-between border-b py-2'>
                 <div className='text-[24px] w-[48px] h-[48px]
                   bg-[#D8D8D8] rounded-[50%] flex justify-center items-center'>
                   😘
