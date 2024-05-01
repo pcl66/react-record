@@ -1,10 +1,12 @@
+import type { ButtonHTMLAttributes } from 'react'
+
 export interface ButtonProps {
   text?: string
   block?: boolean
   className?: string
 }
 
-export const Button: React.FC<ButtonProps> = (p) => {
+export const Button: React.FC<ButtonProps & ButtonHTMLAttributes<HTMLButtonElement>> = (p) => {
   const {
     text = 'button',
     block = false,

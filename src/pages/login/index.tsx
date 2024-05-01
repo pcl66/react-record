@@ -7,6 +7,8 @@ import { Input } from '../../components/input'
 import { Button } from '../../components/button'
 import type { Error, Rules } from '../../utils/validator'
 import { validator } from '../../utils/validator'
+import { useRequest } from '../../hooks/useRequest'
+import { useCountdown } from '../../hooks/useCountdown'
 
 type LoginForm = {
   email: string
@@ -14,10 +16,12 @@ type LoginForm = {
 }
 
 export const Login = () => {
+  const { start, isCounting, time } = useCountdown(1000 * 60)
   const nav = useNavigate()
+  const request = useRequest()
   const [loginForm, setLoginForm] = useState<LoginForm>({
-    email: '',
-    code: '',
+    email: 'fangyinghang@foxmail.com',
+    code: '123456',
   })
   const [error, setError] = useState<Error<LoginForm>>()
   const hSubmit: React.FormEventHandler<HTMLFormElement> = (e) => {
@@ -36,7 +40,15 @@ export const Login = () => {
     ]
     const error = validator(loginForm, rules)
     setError(error)
-    nav('/record-list')
+    request.post('/api/v1/session', {
+      email: loginForm.email,
+      code: loginForm.code,
+    }).then((res) => {
+      if (res.data.jwt) {
+        localStorage.setItem('token', res.data.jwt)
+        nav('/record-list')
+      }
+    })
   }
   return (
     <div>
@@ -53,7 +65,14 @@ export const Login = () => {
           <Input error={error?.email?.[0]} value={loginForm.email} onChange={e => setLoginForm({ ...loginForm, email: e.target.value })} label='邮箱地址' placeholder='请输入邮箱，然后点击发送验证码'></Input>
           <div className='flex gap-2 items-end'>
             <Input error={error?.code?.[0]} value={loginForm.code} onChange={e => setLoginForm({ ...loginForm, code: e.target.value })} className='w-[40%]' label='验证码' placeholder='六位数字'></Input>
-            <Button text='发送验证码' className='h-8 text-[12px] grow'/>
+            {
+              isCounting
+                ? (
+                <Button className='h-8 text-[12px] grow pointer-events-none contrast-[.25]' text={`${Math.ceil(time / 1000)}s`} disabled/>
+                  )
+                : <Button onTouchStart={() => { start() }} type='button' text='发送验证码' className='h-8 text-[12px] grow'/>
+            }
+
           </div>
           <Button className='mt-[80px]' text='登录'/>
         </form>

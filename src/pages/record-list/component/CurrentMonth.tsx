@@ -1,19 +1,19 @@
 import { useEffect, useRef, useState } from 'react'
-import { ajax } from '../../../ajax/ajax'
+// import { ajax } from '../../../ajax/ajax'
+import { useRequest } from '../../../hooks/useRequest'
 import { Button } from '../../../components/button'
 
 const pageItems = 25
 
 export const CurrentMonth = () => {
+  const request = useRequest()
   const [currentPage, setCurrentPage] = useState(1)
   const [items, setItems] = useState<any[]>([])
   const [hasMore, setHasMore] = useState(false)
   const count = useRef(0)
   useEffect(() => {
-    ajax.get(`/api/v1/items?page=${currentPage}`).then((v) => {
-      // @ts-expect-error
+    request.get(`/api/v1/items?page=${currentPage}`).then((v) => {
       setItems(last => last.concat(...v.data.resources))
-      // @ts-expect-error
       count.current = v.data.pager.count
       if (currentPage * pageItems >= count.current) {
         setHasMore(false)
@@ -57,7 +57,6 @@ export const CurrentMonth = () => {
       {
         hasMore && (
           <div className='mx-5'>
-            {/* @ts-expect-error */}
             <Button onClick={hLoadMore} text='加载更多' block />
           </div>
         )
