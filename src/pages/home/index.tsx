@@ -15,7 +15,6 @@ export const Home = () => {
       <div className='flex justify-center items-center mt-[20vh] mb-[10vh]'>
         <img className='w-[125px] h-[125px]' src={zz} alt="" />
       </div>
-      {/* @ts-expect-error */}
       <Button onClick={() => {
         setOpen(true)
         nav('/login')
