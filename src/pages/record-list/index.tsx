@@ -9,7 +9,7 @@ import { Menu } from './component/Menu'
 
 export const RecordList = () => {
   const [activeTab, setActiveTab] = useState('本月')
-  const [open, setOpen] = useState(true)
+  const [open, setOpen] = useState(false)
   const hClickTab = (p: string) => {
     setActiveTab(p)
   }

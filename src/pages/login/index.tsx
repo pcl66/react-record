@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Icon } from '../../components/icon'
 import { TopBar } from '../../components/top-bar'
 import shanzu from '../../assets/山竹.svg'
@@ -13,6 +14,7 @@ type LoginForm = {
 }
 
 export const Login = () => {
+  const nav = useNavigate()
   const [loginForm, setLoginForm] = useState<LoginForm>({
     email: '',
     code: '',
@@ -34,6 +36,7 @@ export const Login = () => {
     ]
     const error = validator(loginForm, rules)
     setError(error)
+    nav('/record-list')
   }
   return (
     <div>
