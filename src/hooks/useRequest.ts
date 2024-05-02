@@ -14,7 +14,8 @@ export type Options = {
 
 export const useRequest = () => {
   const axiosInstance = axios.create({
-    baseURL: isDev ? '/' : 'https://mangosteen2.hunger-valley.com/',
+    // baseURL: isDev ? '/' : 'https://mangosteen2.hunger-valley.com/',
+    baseURL: isDev ? 'https://mangosteen2.hunger-valley.com/' : 'https://mangosteen2.hunger-valley.com/',
     headers: {
       post: {
         'Content-Type': 'application/json',

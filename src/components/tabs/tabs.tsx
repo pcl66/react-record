@@ -2,8 +2,10 @@ import React, { useEffect, useState } from 'react'
 
 export interface TabsProps {
   active: string
+  type?: 'normal' | 'full'
   onClick?: (name: string) => void
   children: React.ReactNode
+  className?: string
 }
 
 export const Tabs: React.FC<TabsProps> = (p) => {
@@ -11,6 +13,8 @@ export const Tabs: React.FC<TabsProps> = (p) => {
     active,
     children,
     onClick,
+    type = 'normal',
+    className,
   } = p
 
   const childrenArray: (React.ReactElement<{ name: string }, string | React.JSXElementConstructor<any>>)[] = React.Children.toArray(children) as (React.ReactElement<{ name: string }, string | React.JSXElementConstructor<any>>)[]
@@ -29,10 +33,10 @@ export const Tabs: React.FC<TabsProps> = (p) => {
   }, [active])
 
   return (
-    <div>
+    <div className={className}>
       {/* select bar */}
       {
-        <div className='relative flex items-center p-2 pl-5 bg-gradient-to-b from-[#8F4CD7] to-[#8F4CD7]'>
+        <div className={`relative flex ${type === 'full' ? 'justify-center' : ''} items-center p-2 pl-5 bg-gradient-to-b from-[#8F4CD7] to-[#8F4CD7]`}>
           {
             childrenArray.map((v) => {
               return (
@@ -44,7 +48,7 @@ export const Tabs: React.FC<TabsProps> = (p) => {
                   onClick?.(v.props.name as string)
                 }}
                 key={(v.props.name) as React.Key}
-                className={'text-white px-2'}
+                className={`text-white px-2 ${type === 'full' ? 'grow' : ''} text-center`}
                 >
                   {v.props.name}
                 </span>
