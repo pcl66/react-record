@@ -36,7 +36,7 @@ export const Tabs: React.FC<TabsProps> = (p) => {
     <div className={className}>
       {/* select bar */}
       {
-        <div className={`relative flex ${type === 'full' ? 'justify-center' : ''} items-center p-2 pl-5 bg-gradient-to-b from-[#8F4CD7] to-[#8F4CD7]`}>
+        <div className={`relative flex ${type === 'full' ? 'justify-center' : ''} items-center p-2 ${type === 'normal' && 'pl-5'} bg-gradient-to-b from-[#8F4CD7] to-[#8F4CD7]`}>
           {
             childrenArray.map((v) => {
               return (
