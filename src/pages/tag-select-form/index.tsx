@@ -7,10 +7,9 @@ import { emojis } from '../../assets/emojis'
 import s from './index.module.scss'
 
 export const TagSelectForm: React.FC = () => {
-  console.log(emojis)
   const emojisNames = emojis.map(v => v.name)
   const [activeName, setActiveName] = useState(emojisNames[0])
-  const [selectedTag, setSelectedTag] = useState({})
+  const [selectedTag, setSelectedTag] = useState<{ name?: string; char?: string }>({})
   const nav = useNavigate()
   return (
     <div className={s.root}>

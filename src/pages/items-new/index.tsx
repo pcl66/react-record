@@ -79,7 +79,7 @@ export const ItemsNew = () => {
               {
                 tags.map((_, i) => {
                   return (
-                    <div key={i}>
+                    <div onClick={() => { nav('/tag-list') }} key={i}>
                       <div className='flex w-[45px] h-[45px] rounded-[50%] justify-center items-center bg-slate-200 border-indigo-400'>{_.sign}</div>
                       <div className='text-[12px] text-center pt-1'>{_.name}</div>
                     </div>
