@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 
 export type Options = {
   url: string
@@ -13,6 +14,7 @@ export type Options = {
 }
 
 export const useRequest = () => {
+  const nav = useNavigate()
   const axiosInstance = axios.create({
     // baseURL: isDev ? '/' : 'https://mangosteen2.hunger-valley.com/',
     baseURL: isDev ? 'https://mangosteen2.hunger-valley.com/' : 'https://mangosteen2.hunger-valley.com/',
@@ -42,6 +44,9 @@ export const useRequest = () => {
       return res
     },
     (err) => {
+      if (err.response.status === 401) {
+        nav('/login')
+      }
       return Promise.reject(err)
     },
   )

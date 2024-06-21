@@ -8,6 +8,7 @@ import { Home } from './pages/home'
 import { RecordList } from './pages/record-list'
 import { Login } from './pages/login'
 import { ItemsNew } from './pages/items-new'
+import { TagSelectForm } from './pages/tag-select-form'
 
 export const router = createBrowserRouter([
   {
@@ -57,6 +58,10 @@ export const router = createBrowserRouter([
   {
     path: '/items-new',
     element: <ItemsNew />,
+  },
+  {
+    path: '/tag-list',
+    element: <TagSelectForm />,
   },
   {
     path: '*',

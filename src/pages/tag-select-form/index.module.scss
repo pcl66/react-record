@@ -1,0 +1,22 @@
+.root {
+  :global {
+    .tag-select-container {
+      border: 1px solid black;
+      height: 450px;
+      span {
+        padding: 6px;
+      }
+      b {
+        padding: 6px;
+      }
+      .active {
+        border: 1px solid red;
+      }
+      &-nav {
+        white-space: nowrap;
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
+    }
+  }
+}

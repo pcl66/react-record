@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Icon } from '../../components/icon'
 import { Tabs } from '../../components/tabs/tabs'
 import { TopBar } from '../../components/top-bar'
@@ -16,6 +17,7 @@ type Tag = {
 
 export const ItemsNew = () => {
   const [activeTab, setActiveTab] = useState('支出')
+  const nav = useNavigate()
   const [tags, setTags] = useState<Tag[]>([])
   const request = useRequest()
   const hClickTab = (p: string) => {
@@ -40,7 +42,7 @@ export const ItemsNew = () => {
             name='return'
             color='white'
             onClick={() => {
-
+              nav(-1)
             }}
           />
         }
@@ -59,7 +61,7 @@ export const ItemsNew = () => {
                 tags.map((_) => {
                   return (
                     <div key={_.id}>
-                      <div className='flex w-[45px] h-[45px] rounded-[50%] justify-center items-center border border-indigo-400'>{_.sign}</div>
+                      <div className='flex w-[45px] h-[45px] rounded-[50%] justify-center items-center bg-slate-200 border-indigo-400'>{_.sign}</div>
                       <div className='text-[12px] text-center pt-1'>{_.name}</div>
                     </div>
                   )
@@ -78,7 +80,7 @@ export const ItemsNew = () => {
                 tags.map((_, i) => {
                   return (
                     <div key={i}>
-                      <div className='flex w-[45px] h-[45px] rounded-[50%] justify-center items-center border border-indigo-400'>{_.sign}</div>
+                      <div className='flex w-[45px] h-[45px] rounded-[50%] justify-center items-center bg-slate-200 border-indigo-400'>{_.sign}</div>
                       <div className='text-[12px] text-center pt-1'>{_.name}</div>
                     </div>
                   )
