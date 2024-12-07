@@ -1,11 +1,3 @@
-<p align="center">
-<a href="https://zjxzjw.github.io/Ananas-UI/#/ananas">
-  <p style="font-size: 40px; font-weight: bold; color: #f1d270;">Ananas</p>
-  <p style="font-size: 40px; font-weight: bold; color: #95cf88">Lock</p>
-</a>
-</p>
-
-
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
