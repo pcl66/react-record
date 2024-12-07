@@ -1,7 +1,7 @@
 <p align="center">
 <a href="https://zjxzjw.github.io/Ananas-UI/#/ananas">
-  <text style="font-size: 40px; font-weight: bold; color: #f1d270;">Ananas</text>
-  <text style="font-size: 40px; font-weight: bold; color: #95cf88">Lock</text>
+  <p style="font-size: 40px; font-weight: bold; color: #f1d270;">Ananas</p>
+  <p style="font-size: 40px; font-weight: bold; color: #95cf88">Lock</p>
 </a>
 </p>
 
